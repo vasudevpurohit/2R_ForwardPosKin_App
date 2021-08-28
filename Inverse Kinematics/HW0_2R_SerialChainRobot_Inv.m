@@ -30,3 +30,7 @@ for i = (1:1:length(xe))
     hold on
     plot([x1(1,i),Xe(1,i)],[y1(1,i),Ye(1,i)],'c-');
 end
+legend('End Effector','Revolute Joint','Link 1','Link 2');
+xlabel('X (in cm)');
+ylabel('Y (in cm)');
+title('Inverse Kinematic Analysis');
