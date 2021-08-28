@@ -11,4 +11,3 @@ theta1(2,:) = 2*atan2d(((-2*B)- sqrt(((2*B).^2)-(4*(((C).^2)-((A).^2))))),(2*(C-
 theta2(1,:) = -theta1(1,:) + atan2d((ye-(L(1)*sind(theta1(1,:)))),(xe-(L(1)*cosd(theta1(1,:)))));
 theta2(2,:) = -theta1(2,:) + atan2d((ye-(L(1)*sind(theta1(2,:)))),(xe-(L(1)*cosd(theta1(2,:)))));
 end
-
