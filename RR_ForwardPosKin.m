@@ -1,4 +1,4 @@
-%%HW0 Serial Chain Robot - Forward & Inverse Kinematics function definition
+%%HW0 Serial Chain Robot - Forward Kinematics function definition
 
 %%Defining the forward motion kinematic equations
 function [xe,ye,x1,y1] = RR_ForwardPosKin(L,t)
