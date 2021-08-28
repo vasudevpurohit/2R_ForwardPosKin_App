@@ -20,13 +20,13 @@ y1 = L(1)*sind(theta1);
 Xe = (L(1)*cosd(theta1))+(L(2)*cosd(theta1+theta2));
 Ye = (L(1)*sind(theta1))+(L(2)*sind(theta1+theta2));
 
-plot(Xe(1,:),Ye(1,:),'ro');
+plot(Xe(1,:),Ye(1,:),'r.');
 axis equal
 hold on
-plot(x1(1,:),y1(1,:),'bo');
+plot(x1(1,:),y1(1,:),'b+');
 hold on
-for i = (1:1:length(xe))
-    plot([0,x1(1,i)],[0,y1(1,i)],'k-');
+for i = (1:1:length(xe)
+    plot([0,x1[1,i]],[0,y1(1,i)],'k-');
     hold on
     plot([x1(1,i),Xe(1,i)],[y1(1,i),Ye(1,i)],'c-');
 end
