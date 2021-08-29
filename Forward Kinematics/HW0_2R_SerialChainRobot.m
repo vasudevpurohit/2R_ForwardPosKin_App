@@ -7,7 +7,7 @@ t = (0:1:360);
 
 [Xe,Ye,X1,Y1] = RR_ForwardPosKin(L,t);
 
-%plotting the results
+plotting the results
 subplot(2,1,1)
 plot(t,Xe,'c.');
 hold on
@@ -23,3 +23,4 @@ axis equal
 legend('End effector trajectory');
 xlabel('Xe (cm)');
 ylabel('Ye (cm)');
+title('End effector trajectory');
