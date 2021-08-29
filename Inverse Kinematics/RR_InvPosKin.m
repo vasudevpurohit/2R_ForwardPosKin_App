@@ -1,6 +1,6 @@
 %%HW0 Serial Chain Robot - Inverse Kinematics function definition
 
-%%Defining the inverse motion kinematic equations
+%% Defining the inverse motion kinematic equations
 
 function [theta1,theta2] = RR_InvPosKin(L,xe,ye)
 A = -2*xe*L(1);

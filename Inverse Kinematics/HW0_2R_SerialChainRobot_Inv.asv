@@ -2,11 +2,11 @@
 %Inverse Kinematics
 
 % clearing workspace
-clear all
+clear workspace
 
 %defining the inputs
 L = [3,2]; %linkage lengths
-t = (0:1:360); 
+t = (0:10:360); 
 
 % creating data for the end effector when the end effector moves along a 
 % circle of radius 3cm and centered at (1,0) & degree (t) increments = 1deg 
@@ -25,34 +25,41 @@ Xe = (L(1)*cosd(theta1))+(L(2)*cosd(theta1+theta2));
 Ye = (L(1)*sind(theta1))+(L(2)*sind(theta1+theta2));
 
 %linkage plot for the entire motion of the end effector
-subplot(2,1,1);
+% subplot(3,1,1);
 plot(Xe(1,:),Ye(1,:),'ro');
 axis equal
+hold on
+plot(0,0,'g+');
 hold on
 plot(x1(1,:),y1(1,:),'bo');
 hold on
 for i = (1:1:length(xe))
-    plot([0,x1(1,i)],[0,y1(1,i)],'k-');
+    plot([0,x1(2,i)],[0,y1(2,i)],'k-');
     hold on
-    plot([x1(1,i),Xe(1,i)],[y1(1,i),Ye(1,i)],'c-');
+    plot([x1(2,i),Xe(1,i)],[y1(1,i),Ye(1,i)],'c-');
 end
-legend('End Effector','Revolute Joint','Link 1','Link 2');
+legend('End Effector','System Zero (0,0)','Revolute Joint','Link 1','Link 2');
 xlabel('X (in cm)');
 ylabel('Y (in cm)');
-title('Inverse Kinematic Analysis');
+title('Inverse Kinematic Analysis - Uncrossed Configuration');
 hold off
 
-%variation of uncrossed theta 1 with the polar angle of the end effector
-subplot(2,1,2);
-plot(t,theta1(1,:),'b-');
-
-xlabel('Polar angle in deg');
-ylabel ('Theta 1 in deg');
-title('Uncrossed configuration - First Revolute angle');
-
-%variation of uncrossed theta 2 with the polar angle of the end effector
-subplot(3,1,3);
-plot(t,theta2(1),'r-');
-xlabel('Polar angle in deg');
-ylabel ('Theta 2 in deg');
-title('Uncrossed configuration - Second Revolute angle');
+% %variation of uncrossed theta with the polar angle of the end effector
+% subplot(3,1,2);
+% plot(t,theta1(1,:),'b.');
+% hold on
+% plot(t,theta2(1,:),'r.');
+% xlabel('Polar angle in deg');
+% ylabel ('Theta in deg');
+% title('Uncrossed configuration - Revolute angles');
+% legend('Theta1','Theta2');
+% 
+% %variation of crossed theta with the polar angle of the end effector
+% subplot(3,1,3);
+% plot(t,theta1(2,:),'b.');
+% hold on
+% plot(t,theta2(2,:),'r.');
+% xlabel('Polar angle in deg');
+% ylabel ('Theta in deg');
+% title('Crossed configuration - Revolute angles');
+% legend('Theta1','Theta2');
