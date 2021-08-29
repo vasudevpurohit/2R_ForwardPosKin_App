@@ -6,7 +6,8 @@ clear workspace
 
 %% defining the inputs
 L = [3,2]; %linkage lengths
-t = (0:1:360); 
+t = (0:1:360);
+sigma = 1;
 
 %% creating data for the end effector when the end effector moves along a 
 % circle of radius 3cm and centered at (1,0) & degree (t) increments = 1deg 
@@ -14,7 +15,7 @@ xe = (1+(3*cosd(t)));
 ye = 3*sind(t);
 
 %% calculating the joint angles using the reverse kinematic function
-[theta1,theta2] = RR_InvPosKin(L,xe,ye);
+[theta1,theta2] = RR_InvPosKin(L,xe,ye,sigma);
 
 %% finding the coordinates for the first revolute joint
 x1 = L(1)*cosd(theta1);
@@ -27,42 +28,29 @@ Ye = (L(1)*sind(theta1))+(L(2)*sind(theta1+theta2));
 %% linkage plot for the entire motion of the end effector (only uncrossed)
 
 subplot(3,1,1);
-plot(Xe(1,:),Ye(1,:),'ro');
+plot(Xe,Ye,'ro');
 axis equal
 hold on
-plot(0,0,'g+');
-hold on
-plot(x1(1,:),y1(1,:),'bo');
+plot(x1,y1,'bo');
 hold on
 for i = (1:1:length(xe))
     plot([0,x1(1,i)],[0,y1(1,i)],'k-');
     hold on
     plot([x1(1,i),Xe(1,i)],[y1(1,i),Ye(1,i)],'c-');
 end
-legend('End Effector','System Zero (0,0)','Revolute Joint','Link 1','Link 2');
+legend('End Effector','Revolute Joint','Link 1','Link 2');
 xlabel('X (in cm)');
 ylabel('Y (in cm)');
-title('Inverse Kinematic Analysis - Uncrossed Configuration');
+title('Inverse Kinematic Analysis');
 hold off
 
-%% variation of uncrossed theta with the polar angle of the end effector
-subplot(3,1,2);
-plot(t,theta1(1,:),'b.');
+%% variation of theta with the polar angle of the end effector
+subplot(2,1,2);
+plot(t,theta1,'b.');
 axis equal
 hold on
-plot(t,theta2(1,:),'r.');
+plot(t,theta2,'r.');
 xlabel('Polar angle in deg');
 ylabel ('Theta in deg');
-title('Uncrossed configuration - Revolute angles');
-legend('Theta1','Theta2');
-
-%% variation of crossed theta with the polar angle of the end effector
-subplot(3,1,3);
-plot(t,theta1(2,:),'b.');
-axis equal;
-hold on
-plot(t,theta2(2,:),'r.');
-xlabel('Polar angle in deg');
-ylabel ('Theta in deg');
-title('Crossed configuration - Revolute angles');
+title('Revolute angles variation v/s t');
 legend('Theta1','Theta2');
